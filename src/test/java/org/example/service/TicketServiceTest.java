@@ -1,10 +1,27 @@
 package org.example.service;
 
-import org.junit.jupiter.api.Test;
-
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
-public class TicketServiceTest {
+import org.example.dto.CreateTicketRequest;
+import org.example.model.Priority;
+import org.example.model.Ticket;
+import org.example.repository.TicketRepository;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+
+@ExtendWith(MockitoExtension.class)
+class TicketServiceTest {
+
+    @Mock
+    private TicketRepository ticketRepository;
+
+    @InjectMocks
+    private TicketService ticketService;
 
     @Test
     void shouldCreateTicketWithGeneratedId() {
